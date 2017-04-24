@@ -61,7 +61,7 @@ Y_test = np.zeros((NUM_TEST_IMG, NUM_CLASS))
 #------------------------class one for test --------------
 for j in xrange(0,len(FrequencyLabels)):
     labels = FrequencyLabels[j]
-    class_folder = "training_dataset/"+labels+"/"
+    class_folder = "testing_dataset/"+labels+"/"
     index_starting = np.sum(Num_train_samples[0:j])
     for i in xrange(0, Num_train_samples[j]):
         index=1000+i # image name with fixed 4-number index
@@ -132,18 +132,3 @@ score = model.evaluate(X_test, Y_test, batch_size=16)
 print score
 
 
-
-
-"""
-# the .flow() command below generates batches of randomly transformed images
-# and saves the results to the `preview/` directory
-
-x = x.reshape((1,) + x.shape)  # this is a Numpy array with shape (1, 3, 150, 150)
-
-i = 0
-for batch in datagen.flow(x, batch_size=1,
-                          save_to_dir='preview', save_prefix='cat', save_format='jpeg'):
-    i += 1
-    if i > 20:
-        break  # otherwise the generator would loop indefinitely
-"""
